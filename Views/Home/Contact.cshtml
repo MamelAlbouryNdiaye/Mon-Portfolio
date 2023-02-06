@@ -1,0 +1,184 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+<!-- inner banner -->
+<section class="inner-banner py-5">
+    <div class="w3l-breadcrumb py-lg-5">
+        <div class="container pt-4 pb-sm-4">
+            <h4 class="inner-text-title pt-sm-5 pt-4">Me contacter</h4>
+            <ul class="breadcrumbs-custom-path mt-2">
+                <li><a href="index.html">Home</a></li>
+                <li class="active"><i class="fas fa-angle-right mx-2"></i>Me contacter</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- //inner banner -->
+<!-- contact -->
+<section class="w3l-contact py-5" id="contact">
+    <div class="container py-lg-5 py-4">
+        <div class="title-heading-w3 text-center mb-sm-5 mb-4">
+            <h5 class="title-small">Echanger avec moi</h5>
+            <h3 class="title-style">Me contacter</h3>
+        </div>
+        <div class="row contact-block">
+            <div class="col-md-6 contact-left pe-lg-5">
+                <h3 class="mb-sm-4 mb-3">Contact Info</h3>
+                <p class="cont-para mb-sm-5 mb-4">
+                    Je cherche actuellement un stage d'une durée maximale de 6mois.
+                    Je suis pret à déménager. 
+                    Je suis intéressé par le dévopppement Web ou la ciber sécurité.
+                </p>
+                <div class="cont-details">
+
+                    <p><i class="fas fa-phone-alt"></i><a href="tel:+33768256362">+33768256362</a></p>
+                    <p>
+                        <i class="fas fa-envelope-open-text"></i><a href="mailto:mamelalboury@gmail.com"
+                                                                    class="mail">mamelalboury@gmail.com</a>
+                    </p>
+                </div>
+                <h4 class="mb-3 mt-5">Follow Me</h4>
+                <ul class="social-icons-contact">
+
+                    <li>
+                        <a href="https://www.linkedin.com/in/mamel-alboury-bbba19194/">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/MamelAlbouryNdiaye">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-6 contact-right mt-md-0 mt-5 ps-lg-0">
+                <form id="contact-form">
+                    <label>Name</label>
+                    <input type="text" id="fullName" placeholder="Nom" required>
+                    <label>Email</label>
+                    <input type="email" id="email_id" placeholder="Email" required>
+                    <label>Message</label>
+                    <textarea id="message" placeholder="Message" required></textarea>
+                    <button onclick="SendMail()">Envoyer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript"> 
+        (function () {
+            emailjs.init('Q-SqxGZWtgy5EdI6-');
+        })();
+    </script>
+    <script type="text/javascript">
+        function SendMail() {
+            var params = {
+                from_name: document.getElementById("fullName").value,
+                email_id: document.getElementById("email_id").value,
+                message: document.getElementById("message").value
+            }
+            emailjs.send("service_c2fxdzg", "template_syroz97", params).then(function (res) {
+                alert("success" + res.status);
+            })
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- map -->
+    <div class="map-iframe">
+        <iframe src="https://www.bing.com/search?q=google+map+23+rue+duguay+trouin+le+havre&qs=NWB&pq=google+map+23+rue+duguay+trouin+le+&sk=NWB4&sc=9-35&cvid=F939BDA93EE24C88898E7E06480DF42F&FORM=QBRE&sp=5"
+                width="100%" height="400" frameborder="0" style="border: 0px;" allowfullscreen=""></iframe>
+    </div>
+    <!-- //contact -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fas fa-level-up-alt" aria-hidden="true"></span>
+    </button>
+
+
+
+
+
+
+
+    <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- theme switch js (light and dark)-->
+    <script src="~/js/theme-change.js"></script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+        $(window).on("scroll", function () {
+            var scroll = $(window).scrollTop();
+
+            if (scroll >= 80) {
+                $("#site-header").addClass("nav-fixed");
+            } else {
+                $("#site-header").removeClass("nav-fixed");
+            }
+        });
+
+        //Main navigation Active Class Add Remove
+        $(".navbar-toggler").on("click", function () {
+            $("header").toggleClass("active");
+        });
+        $(document).on("ready", function () {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+            $(window).on("resize", function () {
+                if ($(window).width() > 991) {
+                    $("header").removeClass("active");
+                }
+            }); s
+        });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+        $(function () {
+            $('.navbar-toggler').click(function () {
+                $('body').toggleClass('noscroll');
+            })
+        });
+    </script>
